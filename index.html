@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Weather App</title>
 </head>
 
-<body>
-    <!-- header (weather dashboard) -->
+<header>Weather Dashboard</header>
 
+<body>
 <!-- left column ----------------r------------------>
+<div class=one-day>left column</div>
     <!-- make FORM with label: search for a city -->
+    <form>
+        <label for="city-search">Search for a City:</label><br>
     <!-- input box -->
+        <input type="text" id="city-search" name="city-search"><br>
     <!-- button -->
+        <input type="submit" value="submit" id="button" class="button">
+    </form>
     <!-- last ten -->
+    <ul id="last-ten"></ul>
     <!-- add buttons for past searches -->
 
 <!-- right column --------------------------------->
+<div>right column</div>
     <!-- container for city, date temp wind humidity, uv index -->
     <!-- color of uv index -->
     <!-- container for five day forecast (loop in js) -->
     <!-- each card will have date, icon for weather, temp, wind, humidity--> 
 
-    <script src="./js/main.js"></script>
+<script src="./js/main.js"></script>
 
 </body>
 </html>

@@ -11,48 +11,8 @@
 //cities history
 let cities
 
-function oneday(city) {
-  var oneDayUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-    city +
-    "&appid=2acf688360ef2e4ae9e0ba6153c2285f";
-  console.log(oneDayUrl)
-  fetch(
-   oneDayUrl
-  ).then((response) => response.json())
-    .then(function (oneDayObj) {
-      console.log(oneDayObj)
-      //lat
-      let lat= oneDayObj.coord.lat
-      //lon
-      let lon = oneDayObj.coord.lon;
-      //icon
-      let iconurl =
-        "http://openweathermap.org/img/w/" + oneDayObj.weather[0].icon + ".png";
-      
-      
-      
-      var uvURL =
-        "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=2acf688360ef2e4ae9e0ba6153c2285f";
-      console.log(uvURL)
-      
-      getSevenDay(lat, lon);
 
-      fetch(uvURL)
-        .then((response2) => 
-          response2.json()
-          
-        )
-        .then(function (uvObj) {
-          //uvdata
-          console.log(uvObj.current.uvi)
 
- 
-         
-      })
-       
-    })
-}
 
 function getSevenDay(lat, lon) {
   
@@ -89,7 +49,48 @@ function init() {
     //check locaslstorage for that city, don't add if already there 
 
 // sr devs would use get coordinates as function too
+//From TA Sesh ///////////////////////////////////////////////////////////
+function getWeather(city) {
+  var getWeatherUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&appid=0a32d54954103d47b3868eb1392ed325";
+  console.log(getWeatherUrl)
+  fetch(getWeatherUrl)
+    .then((response) => response.json())
+    .then(function (getWeatherObj) {
+      console.log(getWeatherObj)
+      //lat
+      let lat= getWeatherObj.coord.lat
+      //lon
+      let lon = getWeatherObj.coord.lon;
+      //icon
+      let iconurl =
+        "http://openweathermap.org/img/w/" + getWeatherObj.weather[0].icon + ".png";
+      
+      var uvURL =
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=0a32d54954103d47b3868eb1392ed325";
+      console.log(uvURL)
+//////////////////////////////////////////
+      
+      function getSevenDay(lat, lon) {
+  
 
+
+}
+
+      fetch(uvURL)
+        .then((response2) => 
+          response2.json()
+        )
+        .then(function (uvObj) {
+          //uvdata
+          console.log(uvObj.current.uvi)
+         
+      })
+       
+    })
+}
 
 
 
@@ -99,4 +100,14 @@ function init() {
     // search button - calls the API and gets the info
     //click on past city button - just call the getWeather function siwht the label of
     
-oneday("Reno");
+getWeather("Reno");
+
+// event listeners //////////////////////////////////////////////////////
+//button.addEventListener('click', getWeather);
+//textInput.addEventListener('keypress', function (events) {
+//   if (event.key === 'Enter') {
+//     getWeather();
+//   }
+// })
+
+init();
